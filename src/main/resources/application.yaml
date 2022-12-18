@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: local
+server:
+  port: 8081
+
+---
+spring:
+  profiles: local
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: library-events-listener-group
+
+---
+spring:
+  profiles: dev
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: library-events-listener-group
+
+
+---
+spring:
+  data:
+    mongodb:
+      uri: mongodb://smcbrm:2udj8NeozgIsTrUG@ac-vxp0dkj-shard-00-00.zxjsxhn.mongodb.net:27017,ac-vxp0dkj-shard-00-01.zxjsxhn.mongodb.net:27017,ac-vxp0dkj-shard-00-02.zxjsxhn.mongodb.net:27017/?ssl=true&replicaSet=atlas-9p1jjs-shard-0&authSource=admin&retryWrites=true&w=majority
+      database: Library
