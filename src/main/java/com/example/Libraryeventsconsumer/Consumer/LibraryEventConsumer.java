@@ -27,7 +27,7 @@ public class LibraryEventConsumer {
         LibraryEvent event = objectMapper.readValue(consumerRecord.value(), LibraryEvent.class);
         libraryEventService.save(event);
 
-        log.info("Message is {}",consumerRecord.value());
+        log.info("Message is {}",consumerRecord);
     }
 
 }
